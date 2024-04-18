@@ -79,7 +79,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                 {stepTwo ? (
                     <form onSubmit={handleSubmit(verifyCodeFunction)} className='mt-20 flex flex-col'>
                         <label className="mb-4 font-bold text-gray-700">کد تایید به شماره موبایل شما ارسال شد لطفا آن را وارد نمائید.</label>
-                        <input type='text' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
+                        <input type='number' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
                         <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-5 mb-5 text-lg">تایید</button>
                         {message}
                     </form>
@@ -97,7 +97,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     </div>
                     <div className="flex flex-col">
                         <label className="mb-2 font-bold text-gray-700">شماره موبایل</label>
-                        <input {...register('phone')} required type="text" className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        <input {...register('phone')} required type="number" className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                     </div>
                     <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
                         ادامه

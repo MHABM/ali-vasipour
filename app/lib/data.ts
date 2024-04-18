@@ -79,7 +79,7 @@ export async function fetchAppointments() {
       appointments.hour,
       appointments.condition
     FROM appointments
-    ORDER BY appointments.created_at ASC;
+    ORDER BY appointments.created_at DESC;
     `;
 
     return appointments.rows
