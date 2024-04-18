@@ -12,11 +12,15 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
+        'mygreen': '#f1fdee',
         blue: {
           400: '#2589FE',
           500: '#0070F3',
           600: '#2F6FEB',
         },
+      },
+      spacing: {
+        '128': '28rem',
       },
     },
     keyframes: {

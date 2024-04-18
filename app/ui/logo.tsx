@@ -1,7 +1,7 @@
 export default function Logo() {
   return (
-    <div className="text-5xl leading-none text-white">
-      Login
+    <div className="text-4xl leading-none text-white">
+      Alomatab
     </div>
   );
 }

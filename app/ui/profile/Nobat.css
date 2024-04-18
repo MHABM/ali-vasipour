@@ -1,0 +1,51 @@
+.nobat{
+    position: fixed;
+    bottom: 15px;
+    left: 25px;
+    button{
+        outline: none;
+        border: none;
+        color: black;
+        background-color: #66c61c;
+        padding: 10px 20px;
+        font-size: 17px;
+        border-radius: 20rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: none;
+    }
+    .show{
+        display: flex;
+        align-items: center;
+    }
+    .nobatMobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:1000px){
+    .nobat{
+        border-top: 1px solid rgb(226, 230, 235);
+        background-color: rgb(255, 255, 255);
+        padding: 12px 16px;
+        width: 108%;
+        bottom: 0;
+        left: 0;
+        z-index: 8;
+        display: flex;
+        justify-content: end;
+        .nobatMobile{
+            color: #fff;
+            background-color: #66c61c;
+            display: block;
+            width: calc(100% - 32px);
+            border-radius: 4px;
+            height: 48px;
+            font-size: 20px;
+            font-weight: 300;
+        }
+        .show{
+            display: none;
+        }
+    }
+}

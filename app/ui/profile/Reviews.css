@@ -1,0 +1,175 @@
+.reviews{
+    border-radius: 9px;
+    box-shadow: 0 0 5px #d3d1d1;
+    margin-bottom: 30px;
+    color: #333;
+    scroll-margin-top: 20px;
+    .reviewsTop{
+        padding: 20px 20px 30px 25%;
+        .reviewsTopTop{
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .reviewsTopBottom{
+            padding-top: 17px;
+            display: flex;
+            align-items: center;
+            .ratingItemLasts{
+                display: flex;
+            }
+            .ratingItem{
+                margin-left: 6rem;
+                .ratingTop{
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                .ratingBottom{
+                    display: flex;
+                    align-items: center;
+                    padding-top: 8px;
+                    span{
+                        font-size: 18px;
+                        font-weight: 700;
+                        padding-left: 9px;
+                    }
+                    svg{
+                        height: 17px;
+                    }
+                }
+            }
+        }
+    }
+    .reviewItem{
+        padding: 50px 20px 40px 25%;
+        border-top: 1px solid #e7e7e7;
+        svg{
+            height: 15px;
+            margin-bottom: 10px;
+        }
+        .reviewsContent{
+            font-size: 15px;
+        }
+        .reviewsName{
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            span{
+                font-size: 16px;
+                font-weight: 700;
+            }
+            div{
+                background-color: #c8d6e240;
+                border-radius: 99px;
+                font-size: 12px;
+                padding: 5px 14px;
+                color: #8394A3;
+                font-weight: 800;
+                margin-right: 6px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:551px) and (max-width:1050px){
+    .reviews{
+        .reviewsTop{
+            padding: 20px;
+            .reviewsTopBottom{
+                #theFirst{
+                    flex: 1;
+                    .ratingTop{
+                        font-size: 18px;
+                    }
+                    .ratingBottom{
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        span{
+                            font-size: 44px;
+                            margin-right: 8%;
+                        }
+                    }
+                }
+                .ratingItem{
+                    margin-left: 0;
+                }
+                .ratingItemLasts{
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    .ratingItem{
+                        padding-top: 14px;
+                        .ratingTop{
+                            font-size: 16px;
+                        }
+                        .ratingBottom{
+                            padding: 0;
+                            span{
+                                padding-left: 4px;
+                            }
+                            svg{
+                                height: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .reviewItem{
+            padding:40px 15px;
+        }
+    }
+}
+
+@media only screen and (max-width:550px){
+    .reviews{
+        .reviewsTop{
+            padding: 20px;
+            .reviewsTopBottom{
+                #theFirst{
+                    flex: 1;
+                    .ratingTop{
+                        font-size: 18px;
+                    }
+                    .ratingBottom{
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        span{
+                            font-size: 44px;
+                            margin-right: 12%;
+                        }
+                    }
+                }
+                .ratingItem{
+                    margin-left: 0;
+                }
+                .ratingItemLasts{
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    .ratingItem{
+                        padding-top: 14px;
+                        .ratingTop{
+                            font-size: 16px;
+                        }
+                        .ratingBottom{
+                            padding: 0;
+                            span{
+                                padding-left: 4px;
+                            }
+                            svg{
+                                height: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .reviewItem{
+            padding:40px 15px;
+        }
+    }
+}

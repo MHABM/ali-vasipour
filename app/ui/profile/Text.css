@@ -1,0 +1,110 @@
+.text{
+    color: #333;
+    .about{
+        border-radius: 9px;
+        box-shadow: 0 0 5px #d3d1d1;
+        padding: 20px;
+        margin-bottom: 30px;
+        scroll-margin-top: 15px;
+        .aboutTop{
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .aboutContent{
+            font-size: 15px;
+        }
+        .aboutQuestion{
+            margin: 25px 0 10px 0;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .aboutAnswer{
+            font-size: 15px;
+        }
+    }
+    .question{
+        border-radius: 9px;
+        box-shadow: 0 0 5px #d3d1d1;
+        padding: 20px;
+        margin-bottom: 30px;
+        scroll-margin-top: 15px;
+        span{
+            font-weight: 700;
+            color: #538764;
+            cursor: pointer;
+        }
+        .aboutTop{
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .aboutQuestion{
+            margin: 15px 0 10px 0;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .aboutAnswer{
+            font-size: 15px;
+        }
+    }
+    .insurance{
+        border-radius: 9px;
+        box-shadow: 0 0 5px #d3d1d1;
+        padding: 20px;
+        margin-bottom: 30px;
+        .insuranceTop{
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .insuranceContent{
+            display: grid;
+            row-gap: 10px;
+            column-gap: 15px;
+            grid-template-columns: repeat(3,calc((100% - 30px)/ 3));
+        }
+    }
+    .feature{
+        border-radius: 9px;
+        box-shadow: 0 0 5px #d3d1d1;
+        padding: 20px;
+        margin-bottom: 30px;
+        .featureTop{
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .featureContent{
+            display: grid;
+            row-gap: 10px;
+            column-gap: 15px;
+            grid-template-columns: repeat(3,calc((100% - 30px)/ 3));
+        }
+    }
+}
+
+@media only screen and (max-width:750px){
+    .text{
+        .aboutTop{
+            text-align: center;
+        }
+        .insurance{
+            .insuranceTop{
+                text-align: center;
+            }
+            .insuranceContent{
+                grid-template-columns: repeat(2,calc((100% - 15px)/ 2));
+                text-align: center;
+            }
+        }
+        .feature{
+            .featureTop{
+                text-align: center;
+            }
+            .featureContent{
+                grid-template-columns: repeat(2,calc((100% - 15px)/ 2));
+                text-align: center;
+            }
+        }
+    }
+}

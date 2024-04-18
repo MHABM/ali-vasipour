@@ -1,0 +1,132 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #0f1619;
+    color: #93a3ab;
+    padding: 40px 80px;
+    overflow: hidden;
+    .footerTop{
+        display: flex;
+    .footerRight{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .rightTitle{
+            font-size: 1.2rem;
+            font-weight: 500 ;
+            margin-bottom: 15px;
+        }
+        .rightItem{
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .rightItem:hover{
+            color: #fff;
+        }
+    }
+    .footerCenter{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .centerTitle{
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .centerItem{
+            width: 60%;
+            margin-bottom: 5px;
+        }
+    }
+    .footerLeft{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .leftTitle{
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .contactItem{
+            user-select:text;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            width: 70%;
+        }
+    }
+    }
+    .footerBottom{
+        margin-top: 60px;
+        .bottomTop{
+            display: flex;
+            justify-content: center;
+            direction: ltr;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .bottomBottom{
+            display: flex;
+            justify-content: center;
+            svg{
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:771px) and (max-width:1200px){
+    .footer{
+        padding: 40px 40px;
+        .footerTop{
+            .footerCenter{
+                .centerItem{
+                    width: 90%;
+                }
+            }
+            .footerLeft{
+                .contactItem{
+                    width: 100%;
+                }
+            }
+        }
+        .footerBottom{
+            .bottomTop{
+                display: block;
+                text-align: center;
+                line-height: 180%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:770px){
+    .footer{
+        padding: 40px 40px;
+        .footerTop{
+            flex-direction: column;
+            gap: 2rem;
+            .footerRight{
+                display: none;
+            }
+            .footerCenter{
+                .centerItem{
+                    width: 100%;
+                }
+            }
+            .footerLeft{
+                .contactItem{
+                    width: 100%;
+                }
+            }
+        }
+        .footerBottom{
+            .bottomTop{
+                display: block;
+                text-align: center;
+                line-height: 180%;
+            }
+        }
+    }
+}
