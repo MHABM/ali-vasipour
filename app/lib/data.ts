@@ -2,6 +2,16 @@ import { sql } from '@vercel/postgres';
 import {User} from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 
+export type appointments = {
+  id: string;
+  firstname: string;
+  lastname: string;
+  phonenumber: string;
+  day: string;
+  hour: string;
+  condition: string;
+}
+
 export async function getUser(email: string) {
   try {
     const user = await sql`SELECT * FROM users WHERE email=${email}`;
@@ -52,5 +62,30 @@ export async function fetchTimesForPatient() {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch times.');
+  }
+}
+
+export async function fetchAppointments() {
+  noStore()
+
+  try {
+    const appointments = await sql<appointments>`
+    SELECT 
+      appointments.id,
+      appointments.firstName,
+      appointments.lastName,
+      appointments.phonenumber,
+      appointments.day,
+      appointments.hour,
+      appointments.condition
+    FROM appointments
+    ORDER BY appointments.created_at ASC;
+    `;
+
+    return appointments.rows
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch appointments.');
   }
 }

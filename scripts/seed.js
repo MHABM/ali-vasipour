@@ -62,12 +62,38 @@ async function seedHours(client) {
   }
 }
 
+async function seedAppointments(client) {
+  try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS appointments (
+        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        firstName VARCHAR(255) NOT NULL,
+        lastName VARCHAR(255) NOT NULL,
+        phoneNumber VARCHAR(255) NOT NULL,
+        day VARCHAR(255) NOT NULL,
+        hour VARCHAR(255) NOT NULL,
+        condition VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+
+    return {
+      createTable
+    };
+  } catch (error) {
+    console.error('Error', error);
+    throw error;
+  }
+}
+
 
 async function main() {
   const client = await db.connect();
 
   await seedUsers(client);
   await seedHours(client);
+  await seedAppointments(client);
 
   await client.end();
 }

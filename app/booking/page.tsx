@@ -1,8 +1,20 @@
+'use client';
+
+import {FieldValues, useForm} from 'react-hook-form'
 import Image from "next/image"
+import { booking, sendCode } from "../lib/actions";
+import { useState } from 'react';
 
 export default function Page({searchParams}:{searchParams:{day:string,hour:string}}){
     const day = persianDate(searchParams.day)
     const hour = searchParams.hour
+    const {register,handleSubmit,reset,formState:{errors}}=useForm()
+    const [stepTwo, setStepTwo] = useState(false)
+    const [code, setCode] = useState('')
+    const [message,setMessage] = useState('')
+    const [firstName,setFirstName] = useState('')
+    const [lastName,setLastName] = useState('')
+    const [phoneNumber,setPhoneNumber] = useState('')
 
     function persianDate(stringDate: string): string {
         const [year, month, day] = stringDate.split('-');
@@ -16,10 +28,30 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
         const monthName = firstFa.split(' ')[1];
         const persianDate = `${weekDay} ${monthDay} ${monthName}`;
         return persianDate;
-      }
+    }
+    async function sendCodeFunction(data: FieldValues){
+        const {firstName,lastName,phone} = data
+        const {num} = await sendCode(phone)
+        if (!num) return
+        reset()
+        setStepTwo(true)
+        setCode(num)
+        setFirstName(firstName)
+        setLastName(lastName)
+        setPhoneNumber(phone)
+
+    }
+    async function verifyCodeFunction(data: FieldValues){
+        const {pass} = data;
+        if(pass.toString() === code){
+            setMessage('نوبت شما با موفقیت ثبت شد به زودی از طرف مطب دندانپزشک با شما تماس گرفته خواهد شد.');
+            await booking(firstName,lastName,phoneNumber,day,hour)
+        }else{
+        setMessage('کد وارد شده اشتباه می‌باشد مجددا تلاش کنید.')}
+    }
 
     return(
-        <div dir="rtl" className="h-screen sm:h-auto bg-mygreen">
+        <div dir="rtl" className="min-h-screen bg-mygreen">
             <div className="px-6 py-4 flex justify-between h-20">
                 <Image src="/images/fastDentGreen.svg" width={85} height={80} alt="" className="md:w-28 mr-2" />
                 <div className="flex items-center">
@@ -44,25 +76,34 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                         <span>نام و نام‌خانوادگی و شماره تماس خود را وارد نمائید.</span>
                     </p>
                 </div>
-                <form className="mt-20 md:mt-6">
+                {stepTwo ? (
+                    <form onSubmit={handleSubmit(verifyCodeFunction)} className='mt-20 flex flex-col'>
+                        <label className="mb-4 font-bold text-gray-700">کد تایید به شماره موبایل شما ارسال شد لطفا آن را وارد نمائید.</label>
+                        <input type='text' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
+                        <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-5 mb-5 text-lg">تایید</button>
+                        {message}
+                    </form>
+                ):(
+                    <form onSubmit={handleSubmit(sendCodeFunction)} className="mt-20 md:mt-6">
                     <div className="grid grid-cols-2 gap-4 mb-10">
                         <div className="flex flex-col">
                             <label className="mb-2 font-bold text-gray-700">نــام</label>
-                            <input required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                            <input {...register('firstName')} type="text" required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                         </div>
                         <div className="flex flex-col">
                             <label className="mb-2 font-bold text-gray-700">نام‌خانوادگی</label>
-                            <input required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                            <input {...register('lastName')} type="text" required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                         </div>
                     </div>
                     <div className="flex flex-col">
                         <label className="mb-2 font-bold text-gray-700">شماره موبایل</label>
-                        <input required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        <input {...register('phone')} required type="text" className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                     </div>
                     <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
                         ادامه
                     </button>
-                </form>
+                    </form>
+                )}
             </div>
         </div>
     )
