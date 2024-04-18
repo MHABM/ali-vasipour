@@ -106,9 +106,9 @@ const Right = ({ times }) => {
           <div className="mb-5">
             <div className="mb-3 text-lg">{day0.day}</div>
             <div>
-              {day0.hour.map((item) => {
+              {day0.hour.map((item,index) => {
                 return (
-                  <Link href={`/booking?day=${sortedDates[0]}&hour=${item}`}>
+                  <Link key={index} href={`/booking?day=${sortedDates[0]}&hour=${item}`}>
                     <button className="mb-2 ml-2 h-8 w-1/4 bg-lime-500 text-sm font-semibold text-white active:bg-blue-950 " >
                       {item}
                     </button>
@@ -120,9 +120,9 @@ const Right = ({ times }) => {
           <div className="mb-5">
             <div className="mb-3 text-lg">{day1.day}</div>
             <div>
-              {day1.hour.map((item) => {
+              {day1.hour.map((item,index) => {
                 return (
-                  <Link href={`/booking?day=${sortedDates[1]}&hour=${item}`}>
+                  <Link key={index} href={`/booking?day=${sortedDates[1]}&hour=${item}`}>
                     <button className="mb-2 ml-2 h-8 w-1/4 bg-lime-500 text-sm font-semibold text-white active:bg-blue-950 " >
                       {item}
                     </button>
@@ -134,9 +134,9 @@ const Right = ({ times }) => {
           <div className="mb-5">
             <div className="mb-3 text-lg">{day2.day}</div>
             <div>
-                {day2.hour.map((item) => {
+                {day2.hour.map((item,index) => {
                 return (
-                  <Link href={`/booking?day=${sortedDates[2]}&hour=${item}`}>
+                  <Link key={index} href={`/booking?day=${sortedDates[2]}&hour=${item}`}>
                     <button className="mb-2 ml-2 h-8 w-1/4 bg-lime-500 text-sm font-semibold text-white active:bg-blue-950 " >
                       {item}
                     </button>
@@ -148,9 +148,9 @@ const Right = ({ times }) => {
           <div className="mb-5">
             <div className="mb-3 text-lg">{day3.day}</div>
             <div>
-            {day3.hour.map((item) => {
+            {day3.hour.map((item,index) => {
                 return (
-                  <Link href={`/booking?day=${sortedDates[3]}&hour=${item}`}>
+                  <Link key={index} href={`/booking?day=${sortedDates[3]}&hour=${item}`}>
                     <button className="mb-2 ml-2 h-8 w-1/4 bg-lime-500 text-sm font-semibold text-white active:bg-blue-950 " >
                       {item}
                     </button>
@@ -162,9 +162,9 @@ const Right = ({ times }) => {
           <div className="mb-5">
             <div className="mb-3 text-lg">{day4.day}</div>
             <div>
-            {day4.hour.map((item) => {
+            {day4.hour.map((item,index) => {
                 return (
-                  <Link href={`/booking?day=${sortedDates[4]}&hour=${item}`}>
+                  <Link key={index} href={`/booking?day=${sortedDates[4]}&hour=${item}`}>
                     <button className="mb-2 ml-2 h-8 w-1/4 bg-lime-500 text-sm font-semibold text-white active:bg-blue-950 " >
                       {item}
                     </button>
