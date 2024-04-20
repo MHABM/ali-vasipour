@@ -6,7 +6,7 @@ import {signIn} from '@/auth';
 import {AuthError} from 'next-auth'
 import axios from 'axios'
 
-export type sendCode = {num:null|string,error: null|string|unknown}
+export type sendCodeType = {num:null|string,error: null|string|unknown}
 
 
 export async function authenticate(
@@ -81,10 +81,9 @@ export async function sendCode(phone: string){
 
     try {
         const response = await axios(config);
-        return {num,error:null}
+        return num
     } catch (error) {
         console.error('Error sending verification code:', error);
-        return {num:null,error}
     }
 }
 

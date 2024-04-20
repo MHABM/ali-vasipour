@@ -1,9 +1,10 @@
 'use client';
 
-import {FieldValues, useForm} from 'react-hook-form'
+import {FieldValues, useForm, FieldError} from 'react-hook-form'
 import Image from "next/image"
 import { booking, sendCode } from "../lib/actions";
 import { useState } from 'react';
+import clsx from 'clsx';
 
 export default function Page({searchParams}:{searchParams:{day:string,hour:string}}){
     const day = persianDate(searchParams.day)
@@ -15,6 +16,8 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
     const [firstName,setFirstName] = useState('')
     const [lastName,setLastName] = useState('')
     const [phoneNumber,setPhoneNumber] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isError, setIsError] = useState(false)
 
     function persianDate(stringDate: string): string {
         const [year, month, day] = stringDate.split('-');
@@ -31,15 +34,19 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
     }
     async function sendCodeFunction(data: FieldValues){
         const {firstName,lastName,phone} = data
-        const {num} = await sendCode(phone)
-        if (!num) return
+
+        setIsSubmitting(true)
+        const num = await sendCode(phone)
+        setIsSubmitting(false)
+        if (num) {
         reset()
         setStepTwo(true)
         setCode(num)
         setFirstName(firstName)
         setLastName(lastName)
         setPhoneNumber(phone)
-
+        }else setIsError(true)
+        
     }
     async function verifyCodeFunction(data: FieldValues){
         const {pass} = data;
@@ -47,7 +54,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
             setMessage('نوبت شما با موفقیت ثبت شد به زودی از طرف مطب دندانپزشک با شما تماس گرفته خواهد شد.');
             await booking(firstName,lastName,phoneNumber,day,hour)
         }else{
-        setMessage('کد وارد شده اشتباه می‌باشد مجددا تلاش کنید.')}
+        setMessage('کد وارد شده اشتباه می‌باشد مجددا تلاش کنید!')}
     }
 
     return(
@@ -77,12 +84,17 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     </p>
                 </div>
                 {stepTwo ? (
-                    <form onSubmit={handleSubmit(verifyCodeFunction)} className='mt-20 flex flex-col'>
-                        <label className="mb-4 font-bold text-gray-700">کد تایید به شماره موبایل شما ارسال شد لطفا آن را وارد نمائید.</label>
-                        <input type='number' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
-                        <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-5 mb-5 text-lg">تایید</button>
+                    <div>
+                        <form onSubmit={handleSubmit(verifyCodeFunction)} className={clsx('mt-20 flex flex-col',{'hidden':message})}>
+                            <label className="mb-4 font-bold text-gray-700">کد تایید به شماره موبایل شما ارسال شد لطفا آن را وارد نمائید.</label>
+                            <input type='number' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
+                            <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-5 mb-5 text-lg">تایید</button>
+                        </form>
+                        <div className='mt-14 flex flex-col justify-center items-center gap-4 font-bold text-gray-700 text-center'>
+                        {message && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 text-lime-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" /></svg>}
                         {message}
-                    </form>
+                        </div>
+                    </div>
                 ):(
                     <form onSubmit={handleSubmit(sendCodeFunction)} className="mt-20 md:mt-6">
                     <div className="grid grid-cols-2 gap-4 mb-10">
@@ -97,9 +109,10 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     </div>
                     <div className="flex flex-col">
                         <label className="mb-2 font-bold text-gray-700">شماره موبایل</label>
-                        <input {...register('phone')} required inputMode='numeric' className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        <input {...register('phone',{pattern:{value: /^[\d٠١٢٣٤٥٦٧٨٩]{10,11}$/ }})} required inputMode='numeric' className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        {(isError || errors.phone) && (<p className='text-sm mt-1 text-red-600'>شماره موبایل نادرست است.</p>)}
                     </div>
-                    <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
+                    <button disabled={isSubmitting} className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
                         ادامه
                     </button>
                     </form>
