@@ -97,7 +97,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     </div>
                     <div className="flex flex-col">
                         <label className="mb-2 font-bold text-gray-700">شماره موبایل</label>
-                        <input {...register('phone')} required type="number" className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        <input {...register('phone')} required inputMode='numeric' className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                     </div>
                     <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
                         ادامه
