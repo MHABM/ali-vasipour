@@ -10,7 +10,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
     const day = persianDate(searchParams.day)
     const hour = searchParams.hour
     const {register,handleSubmit,reset,formState:{errors}}=useForm()
-    const [stepTwo, setStepTwo] = useState(true)
+    const [stepTwo, setStepTwo] = useState(false)
     const [code, setCode] = useState('')
     const [message,setMessage] = useState('')
     const [firstName,setFirstName] = useState('')
