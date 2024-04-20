@@ -50,11 +50,21 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
     }
     async function verifyCodeFunction(data: FieldValues){
         const {pass} = data;
-        if(pass.toString() === code){
+        if(convertPersianToEnglish(pass.toString()) === code){
             setMessage('نوبت شما با موفقیت ثبت شد به زودی از طرف مطب دندانپزشک با شما تماس گرفته خواهد شد.');
             await booking(firstName,lastName,phoneNumber,day,hour)
         }else{
         setMessage('کد وارد شده اشتباه می‌باشد مجددا تلاش کنید!')}
+    }
+    function convertPersianToEnglish(input: string) {
+        const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
+        const englishNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        
+        for (let i = 0; i < 10; i++) {
+            input = input.replace(persianNumbers[i], englishNumbers[i]);
+        }
+    
+        return input;
     }
 
     return(
@@ -67,7 +77,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                 </div>
             </div>
             <div className="px-5 md:px-128">
-                <div className="flex mt-7 mb-10">
+                <div className="flex mt-7 mb-8">
                     <Image src="/images/ali-vasipour.png" width={80} height={80} alt="" />
                     <div className="flex flex-col justify-center gap-1 mr-7">
                         <span className="font-extrabold text-xl">دکتر علی وصی‌پور</span>
@@ -87,7 +97,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     <div>
                         <form onSubmit={handleSubmit(verifyCodeFunction)} className={clsx('mt-20 flex flex-col',{'hidden':message})}>
                             <label className="mb-4 font-bold text-gray-700">کد تایید به شماره موبایل شما ارسال شد لطفا آن را وارد نمائید.</label>
-                            <input type='number' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
+                            <input inputMode='numeric' type='text' {...register('pass')} required className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent text-center"/>
                             <button className="text-white bg-lime-500 w-full rounded-md h-12 mt-5 mb-5 text-lg">تایید</button>
                         </form>
                         <div className='mt-14 flex flex-col justify-center items-center gap-4 font-bold text-gray-700 text-center'>
