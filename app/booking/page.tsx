@@ -120,7 +120,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
                     </div>
                     <div className="flex flex-col">
                         <label className="mb-2 font-bold text-gray-700">شماره موبایل</label>
-                        <input {...register('phone',{pattern:{value: /^[\d٠١٢٣٤٥٦٧٨٩]{10,11}$/ , message:''}})} required inputMode='numeric' className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
+                        <input {...register('phone',{pattern: { value: /^[\d۰۱۲۳۴۵۶۷۸۹]{10,11}$/, message: '' }})} required inputMode='numeric' className=" border-gray-400 text-gray-900 rounded-md focus:border-lime-500 p-2.5 h-12 bg-transparent"></input>
                         {(isError || errors.phone) && (<p className='text-sm mt-1 text-red-600'>شماره موبایل نادرست است.</p>)}
                     </div>
                     <button disabled={isSubmitting} className="text-white bg-lime-500 w-full rounded-md h-12 mt-10 mb-5 text-lg">
