@@ -9,7 +9,7 @@ export default async function Page({searchParams}:{searchParams:{date:string}}) 
 
 
     return (
-        <div dir="rtl" className="flex">
+        <div dir="rtl" className="flex flex-col md:flex-row">
             <div className="w-1/2 h-screen border-l-8 flex flex-col">
                 <div className='mt-10 text-center font-black'>انتخاب ساعت ها</div>
                 <div className='grid grid-cols-3 gap-5 p-16'>

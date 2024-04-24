@@ -83,7 +83,7 @@
         .picTop{
             display: flex;
             .pic1{
-                background-image: url('../../../public/images/pic1.jpg');
+                background-image: url('../../../public/images/pic1.webp');
                 margin: 1px;
                 height: 230px;
                 background-position: center center;
@@ -92,7 +92,7 @@
                 width: 50%;
             }
             .pic2{
-                background-image: url('../../../public/images/pic2.jpg');
+                background-image: url('../../../public/images/pic2.webp');
                 margin: 1px;
                 height: 230px;
                 background-position: center center;
@@ -104,7 +104,7 @@
         .picBottom{
             display: flex;
             .pic3{
-                background-image: url('../../../public/images/pic3.jpg');
+                background-image: url('../../../public/images/pic3.webp');
                 margin: 1px;
                 height: 140px;
                 background-position: center center;
@@ -113,7 +113,7 @@
                 flex: 1;
             }
             .pic4{
-                background-image: url('../../../public/images/pic4.jpg');
+                background-image: url('../../../public/images/pic4.webp');
                 margin: 1px;
                 height: 140px;
                 background-position: center center;
@@ -122,7 +122,7 @@
                 flex: 1;
             }
             .pic5{
-                background-image: url('../../../public/images/pic5.jpg');
+                background-image: url('../../../public/images/pic5.webp');
                 margin: 1px;
                 height: 140px;
                 background-position: bottom center;

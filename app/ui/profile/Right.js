@@ -5,6 +5,7 @@ import './Right.css';
 import Image from 'next/image';
 import Link from 'next/link';
 const jalaali = require('jalaali-js');
+import SimpleMap from './map'
 
 const Right = ({ times }) => {
   function persianDate(stringDate) {
@@ -177,17 +178,16 @@ const Right = ({ times }) => {
       </div>
       <div className="location">
         <h5 className="locationTop">آدرس مطب</h5>
-        <Image src={'/images/map.jpg'} width={400} height={200} alt="" />
-        <div className="locationText">
-          تهران، خیابان ولیعصر، قبل از تقاطع مطهری، خیابان حسینی راد، ساختمان
-          رادکام، طبقه دوم
-        </div>
+        {/* <Image src={'/images/map.jpg'} width={400} height={200} alt="" /> */}
+        <SimpleMap />
+        <div className="locationText">تهران، میدان فاطمی،ابتدای شهیدگمنام، پلاک ۳، طبقه دوم، واحد ۵</div>
         <div className="locationTime">
-          <div>شنبه: ۱۰صبح الی ۶عصر</div>
-          <div>یکشنبه: ۱۰صبح الی ۶عصر</div>
-          <div>دوشنبه: ۱۰صبح الی ۶عصر</div>
-          <div>سه‌شنبه: ۱۰صبح الی ۶عصر</div>
-          <div>چهارشنبه: ۹صبح الی ۲عصر</div>
+          <div>شنبه: ۱۰صبح الی ۸شب</div>
+          <div>یکشنبه: ۱۰صبح الی ۸شب</div>
+          <div>دوشنبه: ۱۰صبح الی ۸شب</div>
+          <div>سه‌شنبه: ۱۰صبح الی ۸شب</div>
+          <div>چهارشنبه: ۱۰صبح الی ۸شب</div>
+          <div>پنجشنبه: ۱۰صبح الی ۳عصر</div>
         </div>
       </div>
       <div className="service" id="serviceScroll">

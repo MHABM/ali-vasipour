@@ -33,7 +33,7 @@ const Header = () => {
                 .scrollIntoView({ behavior: 'smooth' })
             }
           >
-            درباره دندانپزشک
+            درباره کلینیک
           </div>
           <div
             className="rightItem border"
@@ -76,7 +76,7 @@ const Header = () => {
               showNavbar();
             }}
           >
-            درباره دندانپزشک
+            درباره کلینیک
           </div>
           <div
             className="rightItem2"
@@ -100,7 +100,7 @@ const Header = () => {
             <LiaTimesSolid />
           </button>
         </div>
-        <div className="headerTopLeft">
+        <a href='https://alomatab.com' className="headerTopLeft">
           <Image
             src="/images/fastDentGreen.svg"
             width={110}
@@ -108,22 +108,23 @@ const Header = () => {
             alt=""
             className=""
           />
-        </div>
+        </a>
       </div>
       <div className="headerBottom">
         <div className="headerBottomRight">
           <div className="rightStart">
             <Image
-              src="/images/ali-vasipour.png"
+              src="/images/dentino.jpg"
               width={150}
               height={150}
               alt=""
+              className='rounded-full '
             />
           </div>
           <div className="rightEnd">
-            <span className="rightEndTop">دکتر علی وصی‌پور</span>
-            <span className="rightEndMiddle">جراح دندانپزشک</span>
-            <span className="rightEndBottom">تهران، یوسف‌آباد</span>
+            <span className="rightEndTop">کلینیک دنتینو</span>
+            <span className="rightEndMiddle">مرکز تخصصی دندانپزشکی</span>
+            <span className="rightEndBottom">تهران، میدان جهاد</span>
           </div>
         </div>
         <div className="headerBottomLeft">
@@ -168,7 +169,7 @@ const Header = () => {
               <span className="topText">خدمات قابل ارائه</span>
             </div>
             <div className="leftItemMiddle2">
-              روکش، پل، ترمیم، ایمپلنت، درمان ریشه(عصب‌کشی) و ...
+              لمینت، ایمپلنت، روکش، درمان ریشه(عصب‌کشی) و ...
             </div>
             <div
               className="leftItemBottom"
@@ -197,7 +198,7 @@ const Header = () => {
               <span className="topText">بسیار توصیه شده</span>
             </div>
             <div className="leftItemMiddle3">
-              %۱۰۰ بیماران این دکتر را توصیه کرده‌اند
+              %۱۰۰ بیماران این کلینیک را توصیه کرده‌اند
             </div>
           </div>
         </div>
