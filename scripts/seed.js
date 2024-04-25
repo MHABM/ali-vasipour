@@ -92,9 +92,9 @@ async function seedAppointments(client) {
 async function main() {
   const client = await db.connect();
 
-  // await seedUsers(client);
+  await seedUsers(client);
   await seedHours(client);
-  // await seedAppointments(client);
+  await seedAppointments(client);
 
   await client.end();
 }
