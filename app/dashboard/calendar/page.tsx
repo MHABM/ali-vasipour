@@ -10,21 +10,21 @@ export default async function Page({searchParams}:{searchParams:{date:string}}) 
 
     return (
         <div dir="rtl" className="flex flex-col md:flex-row">
-            <div className="w-1/2 h-screen border-l-8 flex flex-col">
-                <div className='mt-10 text-center font-black'>انتخاب ساعت ها</div>
-                <div className='grid grid-cols-3 gap-5 p-16'>
+            <div className="flex flex-col md:border-l-8 md:w-1/2 md:h-screen">
+                <div className='text-center font-black md:mt-10'>انتخاب ساعت ها</div>
+                <div className='p-2 px-3 grid grid-cols-3 gap-3 md:gap-5 md:p-16'>
                     {hours.map((item)=> (
                         <form key={Math.random()} action={addNewHour} >
                             <input type="hidden" name="date" value={date} />
                             <input type="hidden" name="hour" value={item} />
-                            <button className="bg-lime-500 hover:bg-lime-700 text-white font-bold py-2 px-4 rounded" >{item}</button>
+                            <button className="bg-lime-500 hover:bg-lime-700 text-white py-1 px-4 rounded md:py-2 md:font-bold" >{item}</button>
                         </form >
                     ))}
                 </div>
             </div>
-            <div className="w-1/2 flex flex-col items-center gap-5 mt-14">
+            <div className="flex flex-col items-center gap-5 mt-20 md:w-1/2 md:mt-14">
                 <CalendarComponent />
-                <div className='grid grid-cols-3 gap-3 mt-5'>
+                <div className='grid grid-cols-3 gap-3 mb-5 mt-12 md:mt-5'>
                     {times.map((item)=>(
                         <form key={Math.random()} action={deleteHour}>
                             <input type="hidden" name="date" value={date} />

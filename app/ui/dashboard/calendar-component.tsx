@@ -23,7 +23,7 @@ export default function CalendarComponent() {
     })
 
     return (
-        <div className='scale-110'>
+        <div className='scale-150 md:scale-110'>
             <Calendar calendar={persian} locale={persian_fa} value={date} onChange={setDate} className="green"/>
         </div>
     );

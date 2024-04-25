@@ -51,7 +51,7 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
     async function verifyCodeFunction(data: FieldValues){
         const {pass} = data;
         if(convertPersianToEnglish(pass.toString()) === code){
-            setMessage('نوبت شما با موفقیت ثبت شد به زودی از طرف مطب دندانپزشک با شما تماس گرفته خواهد شد.');
+            setMessage('نوبت شما با موفقیت ثبت شد به زودی از کلینیک با شما تماس گرفته خواهد شد.');
             await booking(firstName,lastName,phoneNumber,day,hour)
         }else{
         setMessage('کد وارد شده اشتباه می‌باشد مجددا تلاش کنید!')}
@@ -78,11 +78,11 @@ export default function Page({searchParams}:{searchParams:{day:string,hour:strin
             </div>
             <div className="px-5 md:px-128">
                 <div className="flex mt-7 mb-8">
-                    <Image src="/images/ali-vasipour.png" width={80} height={80} alt="" />
+                    <Image src="/images/dentino.jpg" width={80} height={80} alt="" className='rounded-full' />
                     <div className="flex flex-col justify-center gap-1 mr-7">
-                        <span className="font-extrabold text-xl">دکتر علی وصی‌پور</span>
-                        <span className="text-sm">جراح دندانپزشک</span>
-                        <span className="text-sm">تهران، یوسف‌آباد</span>
+                        <span className="font-extrabold text-xl">کلینیک دنتینو</span>
+                        <span className="text-sm">مرکز تخصصی دندانپزشکی</span>
+                        <span className="text-sm">تهران، میدان جهاد</span>
                     </div>
                 </div>
                 <div>

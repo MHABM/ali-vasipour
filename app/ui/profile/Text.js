@@ -16,7 +16,7 @@ const Text = ()=>{
                 <div className='aboutQuestion'>زودترین وقت خالی برای ویزیت در کلینیک دنتینو چه زمانی می‌باشد؟</div>
                 <div className='aboutAnswer'>روز های کاری کلینیک دنتینو شنبه تا پنج‌شنبه می‌باشد برای <span onClick={()=>document.getElementById("appointmentScroll").scrollIntoView({behavior:'smooth'})}>دریافت زودترین نوبت کلیک کنید. </span></div>
                 <div className='aboutQuestion'>آیا کلینیک دنتینو بیمار جدید هم پذیرش می‌کند؟</div>
-                <div className='aboutAnswer'>بله در حال حاضر کلینیک دنتینو بیمار جدید هم پذیرش می‌کند <span onClick={()=>document.getElementById("appointmentScroll").scrollIntoView({behavior:'smooth'})}> برای دریافت زودترین نوبت کلینیک کنید.</span></div>
+                <div className='aboutAnswer'>بله در حال حاضر کلینیک دنتینو بیمار جدید هم پذیرش می‌کند <span onClick={()=>document.getElementById("appointmentScroll").scrollIntoView({behavior:'smooth'})}> برای دریافت زودترین نوبت کلیک کنید.</span></div>
                 <div className='aboutQuestion'>مشکل اصلی مراجعینی که به کلینیک دنتینو مراجعه می‌کنند، چیست؟</div>
                 <div className='aboutAnswer'>اکثر مراجعین برای درمان ریشه(عصب کشی)، لمینت و ایمپلنت به دنتینو مراجعه می‌کنند. همچنین شما می‌توانید <span onClick={()=>document.getElementById("serviceScroll").scrollIntoView({behavior:'smooth'})}>سایر خدمات قابل ارائه را اینجا</span> مشاهده کنید.</div>
                 <div className='aboutQuestion'>آدرس کلینیک تخصصی دنتینو کجاست؟</div>
