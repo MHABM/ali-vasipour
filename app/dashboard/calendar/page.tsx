@@ -7,12 +7,24 @@ export default async function Page({searchParams}:{searchParams:{date:string}}) 
     const date = searchParams.date;
     const times = await fetchTimes(date)
 
+    async function sortTimes(){
+        const sort = [];
+        for (let i = 0; i < hours.length; i++) {
+          for (let x = 0; x < times.length; x++) {
+            if (hours[i] === times[x]) {
+              sort.push(hours[i]);
+            }
+          }
+        }
+        return sort;
+    }
+    const sortedTimes = await sortTimes()
 
     return (
-        <div dir="rtl" className="flex flex-col md:flex-row">
-            <div className="flex flex-col md:border-l-8 md:w-1/2 md:h-screen">
-                <div className='text-center font-black md:mt-10'>انتخاب ساعت ها</div>
-                <div className='p-2 px-3 grid grid-cols-3 gap-3 md:gap-5 md:p-16'>
+        <div dir="rtl" className="flex flex-col-reverse md:flex-row">
+            <div className="flex flex-col border-t-4 md:border-l-8 md:w-1/2 md:h-screen">
+                <div className='hidden text-center font-black md:mt-10 md:block'>انتخاب ساعت ها</div>
+                <div className='p-2 px-3 grid grid-cols-3 gap-3 mb-5 md:gap-5 md:p-16'>
                     {hours.map((item)=> (
                         <form key={Math.random()} action={addNewHour} >
                             <input type="hidden" name="date" value={date} />
@@ -22,10 +34,10 @@ export default async function Page({searchParams}:{searchParams:{date:string}}) 
                     ))}
                 </div>
             </div>
-            <div className="flex flex-col items-center gap-5 mt-20 md:w-1/2 md:mt-14">
+            <div className="flex flex-col items-center gap-5 mt-14 md:w-1/2">
                 <CalendarComponent />
                 <div className='grid grid-cols-3 gap-3 mb-5 mt-12 md:mt-5'>
-                    {times.map((item)=>(
+                    {sortedTimes.map((item)=>(
                         <form key={Math.random()} action={deleteHour}>
                             <input type="hidden" name="date" value={date} />
                             <input type="hidden" name="hour" value={item} />

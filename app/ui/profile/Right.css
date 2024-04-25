@@ -78,6 +78,7 @@
             user-select:text;
             font-size: 13.5px;
             padding: 5px 15px 10px 15px;
+            text-align: center;
         }
         .locationTime{
             div{
